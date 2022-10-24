@@ -55,7 +55,7 @@ def dataframe_cleaning(dataframe):
         
                 # Actions menu
                 
-                print(f"Nom de la colonne : {index} \nType de la colonne : {dataframe[index].dtype}\nValeurs manquantes: {round((dataframe[index].isnull().sum() / len(dataframe[index]) * 100), 6)} %\nLignes restantes : {len(dataframe[index])}\n")
+                print(f"{separator}\nNom de la colonne : {index} \nType de la colonne : {dataframe[index].dtype}\nValeurs manquantes: {round((dataframe[index].isnull().sum() / len(dataframe[index]) * 100), 6)} %\nLignes restantes : {len(dataframe[index])}\n")
                 for index_list, value in enumerate(choices_list, 1):
                     print(index_list, value)
                 choice = input(f"\nQuel est votre choix de 1 à {len(choices_list)}? ")
