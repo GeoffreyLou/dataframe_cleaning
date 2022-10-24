@@ -1,4 +1,4 @@
-def dataframe_cleaning(dataframe):
+def dataframe_cleaning_2(dataframe):
 
     
     # Import of the necessary modules, variables and options
@@ -26,7 +26,7 @@ def dataframe_cleaning(dataframe):
          
          dataframe_clear = dataframe.drop_duplicates()
          
-         print(f"\n>>>>>>>> A total of  {len(dataframe)-len(dataframe_clear)} duplicates have been removed !\n")
+         print(f"\n>>>>>>>> A total of {len(dataframe)-len(dataframe_clear)} duplicates have been removed !\n")
     
     
     #
@@ -49,7 +49,7 @@ def dataframe_cleaning(dataframe):
             print(f"{column}")
             print(f"{separator}\n")
             while True:
-                choices_list = ["Show more rows", "Show single values", "Search for a specific value", "Replace all NaN", "Replace specific values", "Change object type", "Delete rows with a specific value", "Delete rows with NaN", "Delete column", "Go to next column", "Exit program"]
+                choices_list = ["Show more rows", "Show single values (uniques)", "Search for a specific value", "Replace all NaN", "Replace specific values", "Change colmumn object type", "Delete rows with a specific value", "Delete rows with NaN", "Delete column", "Go to next column", "Exit program"]
                 choices_answer = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
         
         
@@ -138,7 +138,7 @@ def dataframe_cleaning(dataframe):
                     value_to_find = input("Missing values are represented as Na\nWhat value are you looking for? ")
                     result = (dataframe[index].eq(value_to_find)).any()
                     if result == True:
-                        print(f"\n>>>>>>>> The value {value_to_find} is present in the column.\n")
+                        print(f"\n>>>>>>>> The value {value_to_find} is in the column.\n")
                     else:
                         print(f"\n>>>>>>>> The value {value_to_find} is missing from the column.\n")
          
@@ -149,7 +149,7 @@ def dataframe_cleaning(dataframe):
                    
                     valeur = input("What value do you want to replace the missing values with? ")
                     dataframe[index] = dataframe[index].fillna(valeur)
-                    print("\n>>>>>>>> Your values have been replaced.")    
+                    print("\n>>>>>>>> Your values have been replaced.\n")    
              
         
                 # Replace a specific value      
@@ -157,7 +157,7 @@ def dataframe_cleaning(dataframe):
                 if choice == 5:
                 
                     old_value = input("What value do you want to replace? ")
-                    new_value = input("What will be the new value? If NaN, press enter to go to the next step.")
+                    new_value = input("What will be the new value? If NaN, press enter to go to the next step. ")
                     
                     type_value = ["string", "integer", "float", "boolean", "NaN"]
                     type_value_choice = ["1", "2", "3", "4", "5"]
@@ -260,8 +260,7 @@ def dataframe_cleaning(dataframe):
                     row_with_value = input("What value would you like to delete? ")
                     try:
                         dataframe.drop(dataframe.loc[ dataframe[index] == row_with_value].index, inplace = True)
-                        print(f"\n>>>>>>>> The lines with the value '{row_with_value}' have been removed from the column '{index}.'\n")
-                        
+                        print(f"\n>>>>>>>> The lines with the value '{row_with_value}' have been removed from the column '{index}.'\n")                       
                     except:
                         print(f"\n>>>>>>>> The value '{row_with_value}' is not present in the column '{index}'.\n")
  
@@ -421,7 +420,7 @@ def dataframe_cleaning(dataframe):
             file_name = input("What name do you want to save your file under? ")
             print("\nPlease wait, your file is being saved...")
             dataframe.to_csv(f"{file_name}.csv", index = False)
-            print(f"\n>>>>>>>> Your file has been saved under the following name : {file_name}.csv\nThe separator for this file is ','\n")            
+            print(f"\n>>>>>>>> Your file has been saved under the following name : {file_name}.csv\n>>>>>>>> The separator for this file is ','\n")            
 
 
         # Exit the program        
