@@ -45,7 +45,7 @@ def dataframe_cleaning(dataframe):
         # Column and menu presentation
         
         for index, column in dataframe.items():
-            print(f"{separator}\Column {index}\n{separator}\n")
+            print(f"{separator}\nColumn {index}\n{separator}\n")
             print(f"{column}")
             print(f"{separator}\n")
             while True:
@@ -55,7 +55,7 @@ def dataframe_cleaning(dataframe):
         
                 # Actions menu
                 
-                print(f"Name of the column : {index} \nColumn type : {dataframe[index].dtype}\nMissing data: {round((dataframe[index].isnull().sum() / len(dataframe[index]) * 100), 6)} %\nRemaining rows : {len(dataframe[index])}\n")
+                print(f"{separator}\nName of the column : {index} \nColumn type : {dataframe[index].dtype}\nMissing data: {round((dataframe[index].isnull().sum() / len(dataframe[index]) * 100), 6)} %\nRemaining rows : {len(dataframe[index])}\n")
                 for index_list, value in enumerate(choices_list, 1):
                     print(index_list, value)
                 choice = input(f"\nWhat is your choice from 1 to {len(choices_list)}? ")
