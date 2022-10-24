@@ -49,7 +49,7 @@ def dataframe_cleaning(dataframe):
             print(f"{column}")
             print(f"{separator}\n")
             while True:
-                choices_list = ["Afficher plus de lignes", "Afficher les valeurs uniques", "Chercher une valeur spécifique", "Remplacer toutes les NaN (valeurs manquantes)", "Remplacer une valeur spécifique", "Changer le type d'objet de la colonne", "Supprimer les lignes ayant une valeur spécifique", "Supprimer les lignes avec NaN (valeurs manquantes)", "Supprimer la colonne", "Passer à la colonne suivante", "Quitter le programme"]
+                choices_list = ["Afficher plus de lignes", "Afficher les valeurs uniques", "Chercher une valeur spécifique", "Remplacer toutes les NaN", "Remplacer des valeurs spécifiques", "Changer le type d'objet", "Supprimer les lignes avec une valeur spécifique", "Supprimer les lignes avec NaN", "Supprimer la colonne", "Passer à la colonne suivante", "Quitter le programme"]
                 choices_answer = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
         
         
@@ -81,7 +81,7 @@ def dataframe_cleaning(dataframe):
                     
                     first_last = ["Du début de la colonne", "De la fin de la colonne"]
                     first_last_choice = ["1", "2"]
-                    print("\nCes lignes doivent être celles : ")
+                    print("\nCes lignes doivent être celles :")
                     
                     for index_choice, element in enumerate(first_last, 1):
                         print(index_choice, element)
@@ -149,7 +149,7 @@ def dataframe_cleaning(dataframe):
                    
                     valeur = input("Par quelle valeur souhaitez-vous remplacer les valeurs manquantes? ")
                     dataframe[index] = dataframe[index].fillna(valeur)
-                    print("\n>>>>>>>> Vos valeurs ont été remplacées.")    
+                    print("\n>>>>>>>> Vos valeurs ont été rempalcées.\n")    
              
         
                 # Replace a specific value      
@@ -157,7 +157,7 @@ def dataframe_cleaning(dataframe):
                 if choice == 5:
                 
                     old_value = input("Quelle valeur souhaitez-vous remplacer? ")
-                    new_value = input("Quelle sera la nouvelle valeur ? Si NaN, appuyez sur entrée pour aller à l'étape suivante.")
+                    new_value = input("Quelle sera la nouvelle valeur ? Si NaN, appuyez sur entrée pour aller à l'étape suivante. ")
                     
                     type_value = ["string", "integer", "float", "boolean", "NaN"]
                     type_value_choice = ["1", "2", "3", "4", "5"]
@@ -260,10 +260,9 @@ def dataframe_cleaning(dataframe):
                     row_with_value = input("Quelle valeur souhaitez-vous supprimer? ")
                     try:
                         dataframe.drop(dataframe.loc[ dataframe[index] == row_with_value].index, inplace = True)
-                        print(f"\n>>>>>>>> Les lignes ayant la valeur '{row_with_value}' ont bien été supprimée de la colonne '{index}.'\n")
-                        
+                        print(f"\n>>>>>>>> Les lignes ayant la valeur '{row_with_value}' ont bien été supprimée de la colonne '{index}.'")                        
                     except:
-                        print(f"\n>>>>>>>> La valeur '{row_with_value}' n'est pas présente dans la colonne '{index}'.\n")
+                        print(f"\n>>>>>>>> La valeur '{row_with_value}' n'est pas présente dans la colonne '{index}'.")
  
                            
                 # Delete lines with NaN
@@ -287,7 +286,7 @@ def dataframe_cleaning(dataframe):
                     while True:                         
                         delete_choice = input("Êtes-vous sûr de vouloir supprimer cette colonne? ")
                         if delete_choice not in delete_list_choices:
-                            delete_choice = input("Êtes-vous sûr de vouloir supprimer cette colonne? ")
+                            delete_choice = input("Êtes-vous sûr de vouloir supprimer la colonne? ")
                         else:
                             delete_choice = int(delete_choice)
                             if delete_choice == 1:
@@ -316,8 +315,9 @@ def dataframe_cleaning(dataframe):
                 if choice == 11:
                     print("Programme terminé.")
                     sys.exit()
-                           
-        print("Toutes les colonnes ont été analysées.\n\n")                         
+         
+                    
+        print("Toutes les colonnes ont été analysées.\n\n")         
         print("###############################")
         print("#      Analyse DataFrame      #")
         print("###############################")
@@ -369,7 +369,7 @@ def dataframe_cleaning(dataframe):
                 else:
                     number_row = input("Combien de lignes voulez-vous afficher? ")
             
-            first_last = ["Du début du dataframe", "De la fin du dataframe"]
+            first_last = ["Du début du tableau", "De la fin du tableau"]
             first_last_choice = ["1", "2"]
             print("\nCes lignes doivent être celles :")
             
@@ -421,7 +421,7 @@ def dataframe_cleaning(dataframe):
             file_name = input("Sous quel nom voulez-vous enregistrer votre fichier? ")
             print("\nVeuillez patienter, enregistrement de votre fichier en cours...")
             dataframe.to_csv(f"{file_name}.csv", index = False)
-            print(f"\n>>>>>>>> Votre fichier a bien été enregistré sous le nom suivant : {file_name}.csv\nLe séparateur pour ce fichier est ','\n")            
+            print(f"\n>>>>>>>> Votre fichier a bien été enregistré sous le nom suivant : {file_name}.csv\n>>>>>>>> Le séparateur pour ce fichier est ','.\n")            
 
 
         # Exit the program        
